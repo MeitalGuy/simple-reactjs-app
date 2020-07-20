@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Customers from './Customers'
+import Articles from './Articles'
 import { BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 
 
@@ -14,13 +14,13 @@ class App extends Component {
         <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Simple React App</h1>
+          <h1 className="App-title">Simple React News App</h1>
         </header>
           <Switch>
                 <Route exact path= "/" render={() => (
-                  <Redirect to="/customerlist"/>
+                  <Redirect to="/articlelist"/>
                 )}/>
-                 <Route exact path='/customerlist' component={Customers} />
+                 <Route exact path='/articlelist' component={Articles} />
           </Switch>
       </div>
     </Router>
