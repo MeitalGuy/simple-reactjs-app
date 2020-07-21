@@ -4,9 +4,10 @@
   "private": true,
   "homepage": "https://meitalguy.github.io/simple-reactjs-news-app",
   "dependencies": {
+    "bootstrap": "^4.5.0",
     "react": "^16.4.1",
-    "react-bootstrap": "^0.32.1",
-    "react-dom": "^16.4.1",
+    "react-bootstrap": "^1.2.2",
+    "react-dom": "^16.13.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4"
   },

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Panel from 'react-bootstrap/lib/Panel'
-import Button from 'react-bootstrap/lib/Button'
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 import ArticleDetails from './ArticleDetails'
 
 export default class Articles extends Component {
@@ -34,21 +34,19 @@ export default class Articles extends Component {
       <div className="col-md-3">
         {
 
-          this.state.articlesList.map(article => <Panel bsStyle="info" key={article.title} className="centeralign">
-            <Panel.Heading>
-              <Panel.Title componentClass="h3">{article.title}</Panel.Title>
-            </Panel.Heading>
-            <Panel.Body>
-              <p>{article.source.name}</p>
-              <p>{article.publishedAt}</p>
+          this.state.articlesList.map(article => 
+          <Card className="centeralign">
+            <Card.Body>
+              <Card.Title>{article.title}</Card.Title>
+              <Card.Subtitle className="mb-2 text-muted">{article.source.name}</Card.Subtitle>
+              <Card.Text>{article.publishedAt}</Card.Text>
               <Button bsStyle="info" onClick={() => this.setState({selectedArticleIndex: this.state.articlesList.indexOf(article)})}>
 
                 Click to View Details
 
               </Button>
-
-            </Panel.Body>
-          </Panel>)
+            </Card.Body>
+          </Card>)
         }
       </div>
       <div className="col-md-6">

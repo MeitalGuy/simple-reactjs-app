@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import Panel from 'react-bootstrap/lib/Panel'
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
 //This Component is a child Component of Articles Component
 export default class ArticleDetails extends Component {
@@ -32,20 +33,15 @@ export default class ArticleDetails extends Component {
     if (!this.state.articleDetails)
       return (<p>Loading Data</p>)
     return (<div className="articledetails">
-      <Panel bsStyle="info" className="centeralign">
-        <Panel.Heading>
-          <Panel.Title componentClass="h3">{this.state.articleDetails.title}</Panel.Title>
-        </Panel.Heading>
-        <Panel.Body>
-          <p>Title : {this.state.articleDetails.title}</p>
-          <p>Source : {this.state.articleDetails.source.name}</p>
-          <p>Author : {this.state.articleDetails.author}</p>
-          <p>Published at : {this.state.articleDetails.publishedAt}</p>
-          <p>Description : {this.state.articleDetails.description}</p>
-          <p>Url : {this.state.articleDetails.url}</p>
-          <p>Image Url : {this.state.articleDetails.urlToImage}</p>
-        </Panel.Body>
-      </Panel>
+      <Card bg='light'>
+        <Card.Img variant="top" src={this.state.articleDetails.urlToImage} />
+        <Card.Body>
+          <Card.Title as="h4">{this.state.articleDetails.title}</Card.Title>
+          <Card.Subtitle className="mb-2 text-muted">{this.state.articleDetails.source.name}</Card.Subtitle>
+          <Card.Text>{this.state.articleDetails.description}</Card.Text>
+          <Button variant="info" href={this.state.articleDetails.url}>Read full article</Button>
+        </Card.Body>
+      </Card>
     </div>)
   }
 }
