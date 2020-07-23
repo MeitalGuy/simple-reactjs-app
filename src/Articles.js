@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
-import Spinner from "react-bootstrap/Spinner";
-import ArticleDetails from './ArticleDetails'
+import Alert from 'react-bootstrap/Alert';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
+import ArticleDetails from './ArticleDetails';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class Articles extends Component {
@@ -24,12 +25,20 @@ export default class Articles extends Component {
     fetch('https://newsapi.org/v2/top-headlines?country=il&apiKey=72d6bb51f7a14edf80a54e2f54900661')
     .then(res => res.json())
     .then((data) => {
-      this.setState({ articlesList: data.articles })
+      this.setState({ articlesList: data.articles });
+      this.setState({ errorMessage: null});
     })
-    .catch(console.log)
+    .catch((error) => {
+            console.log(error);
+            this.setState({ errorMessage: error});
+          })
   };
 
   render() {
+    if(this.state.errorMessage)
+      return(<div className="col-md-12">
+                <Alert variant="danger" transition="false">An error occured while fetching data from News API.</Alert>
+            </div>);
     if (!this.state.articlesList)
       return (<Spinner animation="grow" role="status">
               <span className="sr-only">Loading...</span>
