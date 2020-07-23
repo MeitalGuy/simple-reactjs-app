@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import Spinner from "react-bootstrap/Spinner";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 //This Component is a child Component of Articles Component
 export default class ArticleDetails extends Component {
@@ -31,15 +33,17 @@ export default class ArticleDetails extends Component {
 
   render() {
     if (!this.state.articleDetails)
-      return (<p>Loading Data</p>)
+      return (<Spinner animation="grow" role="status">
+          <span className="sr-only">Loading...</span>
+        </Spinner>)
     return (<div className="articledetails">
       <Card bg='light'>
         <Card.Img variant="top" src={this.state.articleDetails.urlToImage} />
         <Card.Body>
-          <Card.Title as="h4">{this.state.articleDetails.title}</Card.Title>
+          <Card.Title>{this.state.articleDetails.title}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">{this.state.articleDetails.source.name}</Card.Subtitle>
           <Card.Text>{this.state.articleDetails.description}</Card.Text>
-          <Button variant="info" href={this.state.articleDetails.url}>Read full article</Button>
+          <Button variant="info" href={this.state.articleDetails.url} target="_blank">Read full article</Button>
         </Card.Body>
       </Card>
     </div>)

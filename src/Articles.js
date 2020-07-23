@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
+import Spinner from "react-bootstrap/Spinner";
 import ArticleDetails from './ArticleDetails'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class Articles extends Component {
 
@@ -29,7 +31,9 @@ export default class Articles extends Component {
 
   render() {
     if (!this.state.articlesList)
-      return (<p>Loading data</p>)
+      return (<Spinner animation="grow" role="status">
+              <span className="sr-only">Loading...</span>
+            </Spinner>)
     return (<div className="addmargin">
       <div className="col-md-3">
         {
