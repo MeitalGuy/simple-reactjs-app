@@ -20,9 +20,15 @@ export default class Articles extends Component {
     this.getArticleData();
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.category !== this.props.category) {
+      this.getArticleData();
+    }
+  }
+
   //Function to get the Article Data from News API
   getArticleData() {
-    fetch('https://newsapi.org/v2/top-headlines?country=il&apiKey=72d6bb51f7a14edf80a54e2f54900661')
+    fetch('https://newsapi.org/v2/top-headlines?country=il&category='+this.props.category+'&apiKey=72d6bb51f7a14edf80a54e2f54900661')
     .then(res => res.json())
     .then((data) => {
       this.setState({ articlesList: data.articles });
