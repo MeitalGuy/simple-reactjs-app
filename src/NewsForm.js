@@ -21,7 +21,7 @@ export default class NewsForm extends React.Component {
             <select onChange={this.handleCategoryChange}>
               <option>business</option>
               <option>entertainment</option>
-              <option>general</option>
+              <option selected>general</option>
               <option>health</option>
               <option>science</option>
               <option>sports</option>
