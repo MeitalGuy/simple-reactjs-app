@@ -10,13 +10,19 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.handleCategoryChange.bind(this);
+    this.handleCountryChange.bind(this);
     this.state = {
-      category: 'general'
+      category: 'general',
+      country: 'il'
     };
   }
 
   handleCategoryChange = (category) => {
     this.setState({category: category});
+  }
+
+  handleCountryChange = (country) => {
+    this.setState({country: country});
   }
 
   render() {
@@ -27,7 +33,7 @@ class App extends Component {
         <div className="App">
         <header className="App-header">
           <div className="col-md-3">
-            <NewsForm onCategoryChange={this.handleCategoryChange} />
+            <NewsForm onCategoryChange={this.handleCategoryChange} onCountryChange={this.handleCountryChange} />
           </div>
           <div className="col-md-6">
             <img src={logo} className="App-logo" alt="logo" />
@@ -41,7 +47,7 @@ class App extends Component {
                   <Redirect to="/articlelist"/>
                 )}/>
                  <Route exact path='/articlelist'   render={(props) => (
-                                                      <Articles {...props} category={this.state.category} />
+                                                      <Articles {...props} category={this.state.category} country={this.state.country} />
                                                           )} />
           </Switch>
       </div>
